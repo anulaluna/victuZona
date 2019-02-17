@@ -2,36 +2,36 @@
 
   <nav id="sidebar" [ngClass]="{'active':activeSidebar}">
     <div class="sidebar-header">
-      <h3>COGNITO</h3>
+      <h3>VICTU ZONA</h3>
     </div>
 
     <ul class="list-unstyled components">
       <p>Dummy Heading</p>
-      <li class="active">
-        <a>Aktywności</a>
-      </li>
-      <li>
-        <a>O mnie</a>
-      </li>
       <li appCollapse>
-        <a data-toggle="collapse" aria-expanded="true" class="dropdown-toggle">Słowniki</a>
+        <a routerLink="/recipe" routerLinkActive="active" data-toggle="collapse" aria-expanded="true" class="dropdown-toggle">Przepisy</a>
         <ul class="collapse list-unstyled" id="pageSubmenu">
           <li>
-            <a>Page 1</a>
+            <a>Śniadanie</a>
           </li>
           <li>
-            <a>Aktywności</a>
+            <a>Obiad</a>
           </li>
           <li>
-            <a>Kategorie aktywności</a>
+            <a>Kolacja</a>
+          </li>
+          <li>
+            <a>Przekąska</a>
+          </li>
+          <li>
+            <a>Deser</a>
           </li>
         </ul>
       </li>
-      <li>
-        <a>Portfolio</a>
+      <li class="active">
+        <a routerLink="/product" routerLinkActive="active">Produkty</a>
       </li>
-      <li>
-        <a>Contact</a>
+      <li class="active">
+        <a>Kalkulator</a>
       </li>
     </ul>
   </nav>
@@ -45,9 +45,9 @@
         </button>
 
       </div>
-
+     
     </nav>
-
+    <router-outlet></router-outlet>
 
   </div>
 
