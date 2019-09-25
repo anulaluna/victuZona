@@ -1,53 +1,64 @@
-<p>
-  Dodaj produkt
-</p>
-<form>
-  <div class="col-md-6">
-  <div class="form-group row">
-    <label for="example-text-input" class="col-2 col-form-label">Nazwa</label>
-    <div class="col-4">
-      <input class="form-control" type="text" id="example-text-input">
-    </div>
-  </div>
-  <div class="form-group row">
-    <label for="example-text-input" class="col-2 col-form-label">Kategoria</label>
-    <div class="col-4">
-      <input class="form-control" type="text" id="example-text-input">
-    </div>
-  </div>
+<div>
   <div class="row">
-    <p>Wartości odżywcze w 100g</p>
+    <button class="btn btn-primary">Powrót</button>
+    <h4>
+      Nowy produkt
+    </h4>
   </div>
-  <div class="form-group row">
-    <label for="example-text-input" class="col-2 col-form-label">Wartość energetyczna (kcal)</label>
-    <div class="col-4">
-      <input class="form-control" type="text" id="example-text-input">
-    </div>
-  </div>
-  <div class="form-group row">
-    <label for="example-text-input" class="col-2 col-form-label">Białko (g)</label>
-    <div class="col-4">
-      <input class="form-control" type="text" id="example-text-input">
-    </div>
-  </div>
+  <form (ngSubmit)="onSubmit()" #productForm="ngForm">
+    <div class="row">
+      <div class="col-md-6 col-ms-12">
+        <div class="form-group row">
+          <label for="example-text-input" class="col-4 col-form-label">Nazwa</label>
+          <div class="col-4">
+            <input class="form-control" ngModel type="text" name="name"  #name="ngModel" required>
+             <div *ngIf="!name.valid && name.dirty">Pole wymagane!</div>
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="example-text-input" class="col-4 col-form-label">Kategoria</label>
+          <div class="col-4">
+              <select  class="form-control"  ngModel name="category">
+                  <option *ngFor="let cat of categories" [value]="cat.id">{{cat.name}}</option>
+                </select>
+          </div>
+        </div>
+        <div class="row">
+          <h6>Wartości odżywcze w 100g</h6>
+        </div>
+        <div class="form-group row">
+          <label for="example-text-input" class="col-4 col-form-label">Wartość energetyczna (kcal)</label>
+          <div class="col-4">
+            <input class="form-control" ngModel="calories"  type="number" name="calories">
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="example-text-input" class="col-4 col-form-label">Białko (g)</label>
+          <div class="col-4">
+            <input class="form-control"  ngModel  name="protein">
+          </div>
+        </div>
 
-  <div class="form-group row">
-    <label for="example-text-input" class="col-2 col-form-label">Tłuszcz (g)</label>
-    <div class="col-4">
-      <input class="form-control" type="text" id="example-text-input">
-    </div>
-  </div>
+        <div class="form-group row">
+          <label for="example-text-input" class="col-4 col-form-label">Tłuszcz (g)</label>
+          <div class="col-4">
+            <input class="form-control" ngModel type="number"  name="fat">
+          </div>
+        </div>
 
-  <div class="form-group row">
-    <label for="example-text-input" class="col-2 col-form-label">Węglowodany (g)</label>
-    <div class="col-4">
-      <input class="form-control" type="text" id="example-text-input">
+        <div class="form-group row">
+          <label for="example-text-input" class="col-4 col-form-label">Węglowodany (g)</label>
+          <div class="col-4">
+            <input class="form-control" ngModel  type="number"  name="carbs">
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6 col-ms-12">
+        Kolumna
+      </div>
     </div>
-  </div>
+    <button type="submit" class="btn btn-primary">Zapisz</button>
+
+  </form>
+  {{product}}
 </div>
-<div class="col-md-6">
-  Kolumna
-</div>
-  <button type="submit" class="btn btn-primary">Zapisz</button>
-
-</form>

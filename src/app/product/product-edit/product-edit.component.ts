@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { NgForm } from '@angular/forms';
+import { Product } from '../product.model';
 
 @Component({
   selector: 'app-product-edit',
@@ -6,10 +8,22 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./product-edit.component.css']
 })
 export class ProductEditComponent implements OnInit {
-
-  constructor() { }
+  @ViewChild('productForm')
+  productForm: NgForm;
+  product = new Product();
+  categories = [
+    { id: 1, name: 'Białko' },
+    { id: 2, name: 'Tłuszcz' },
+    { id: 3, name: 'Węglowodany' }
+  ];
+  constructor() {}
 
   ngOnInit() {
+    setTimeout(() => {
+this.productForm.setValue(this.product)
+    }, 0)
   }
-
+  onSubmit() {
+    console.log(this.productForm.value);
+  }
 }
